@@ -29,8 +29,7 @@
   Known Issues:
   blah, blah, blah, blah
 -->
-
- <head>
+<head>
   <meta charset="utf-8">
   <title>Photo Transform</title>
   <meta name="viewport" content="width=device-width, initial-scale=.7">
@@ -96,7 +95,6 @@
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
-
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
@@ -129,66 +127,48 @@
           console.log("Blue intensity transformation complete.");
         };
 
+       } // end of img.onload
+        
         img.src = reader.result;
-      };
-
+      } //  end of reader.onload
+      
       reader.readAsDataURL(file);
+    } // end of the if statement checking that file is an image
+    else
+    {
+      // this is what happens if the orignial file selected is not an image file
+      messageDisplayArea.innerHTML = "File not supported!"
+    } // end of the else statement if file in NOT an image
+  }); // end of the fileInput.addEventListener function
+ } // end of the window.onload function
+ </script>
+ </head>
 
-    } else {
-      messageDisplayArea.innerHTML = "File not supported!";
-    }
+ <body>
+  <div data-role="page">
+    <div data-role="header">
+    <h1>Primary Colors</h1></div><!-- /header -->
+    <div data-role="content">	
+      <h2>Push button to take picture.</h2>
+      <div>
+        Press orange button to create or choose image file:
+        <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
+      </div>
+      <div id="messageDisplayArea"></div>
+      
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext("2d");
+        context.font = '20pt Calibri';
+        context.fillStyle = "black";
+        context.fillText("Original image will go here", 10, 20);
+      </script>
 
-  });
-};
-</script>
-</head>
-
-<body>
-<div data-role="page">
-
-  <div data-role="header">
-    <h1>Primary Colors</h1>
-  </div>
-
-  <div data-role="content">	
-
-    <h2>Push button to take picture.</h2>
-
-    <div>
-      Press orange button to create or choose image file:
-      <input type="file" id="fileInput" style="background-color: #FF6600;">
-    </div>
-
-    <div id="messageDisplayArea"></div>
-
-    <!-- Canvas 1: Original -->
-    <canvas id="myCanvas" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas>
-    <script>
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext("2d");
-      context.font = '20pt Calibri';
-      context.fillStyle = "black";
-      context.fillText("Original image will go here", 10, 20);
-    </script>
-
-    <br><br>
-
-    <!-- Canvas 2: Blue Filter -->
-    <canvas id="dataCanvas" width="600" height="500" style="border:3px solid blue;"></canvas>
-    <script>
-      var canvas2 = document.getElementById('dataCanvas');
-      var ctx2 = canvas2.getContext("2d");
-      ctx2.font = '20pt Calibri';
-      ctx2.fillStyle = "blue";
-      ctx2.fillText("Blue intensity image will appear here", 10, 20);
-    </script>
-
-  </div>
-
-  <div data-role="footer" data-position="fixed">
-    <p>DIY Diagnostics</p>
-  </div>
-
-</div>
-</body>
+    </div><!-- /content -->
+    <div data-role="footer" data-position="fixed">
+      <p>DIY Diagnostics</p>
+    </div><!-- /footer -->
+  </div><!-- /page -->
+ </body>
 </html>
