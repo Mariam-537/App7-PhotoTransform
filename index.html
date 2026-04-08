@@ -14,7 +14,7 @@
  
   Authors in chronological order of contribution:
   Author 1: Timothy E. Riedel
-  Author 2: ?????????
+  Author 2: Mariam Hamouie
   
   References:
   http://docs.webplatform.org/wiki/concepts/programming/drawing_images_onto_canvas#Loading_the_image_programmatically
@@ -24,10 +24,10 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  blah, blah, blah,
+  The goal of thsi code is to produce an app that displays two simple canvases, one will have an image and the second will make the image blue. This involves a user uploading a photo onto the app, and then it transforms into being blue. 
  
   Known Issues:
-  blah, blah, blah, blah
+  This code is very rudimentary and should not be used to daignose anything. This code may not even work properly, it is alot of trial and error. 
 -->
 <head>
   <meta charset="utf-8">
@@ -149,23 +149,23 @@
     <div data-role="header">
     <h1>Primary Colors</h1></div><!-- /header -->
     <div data-role="content">	
-      <h2>Push button to take picture.</h2>
+      <h2>Push button to take picture.</h2> <!-- this is a header, that will be seen on the screen of the app -->
       <div>
-        Press orange button to create or choose image file:
-        <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
-      </div>
-      <div id="messageDisplayArea"></div>
+        Press orange button to create or choose image file: 
+        <input type="file" id="fileInput" STYLE="background-color: #FF6600;"> <!-- the text shows up in a little orange box, which is coded for right here --> 
+      </div> 
+      <div id="messageDisplayArea"></div> <!-- this is just the ID that says that this area of the page is where the messages are displayed --> 
       
-      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- this is the id of the canvas --> 
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
+        context.font = '20pt Calibri'; 
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
-      </script>
+      </script> <!-- that tells the code what font and size and where the text will go --> 
 
-    </div><!-- /content -->
+    </div><!-- this is where the footer of the page will be  -->
     <div data-role="footer" data-position="fixed">
       <p>DIY Diagnostics</p>
     </div><!-- /footer -->
